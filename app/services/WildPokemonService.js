@@ -19,8 +19,11 @@ class wildPokemonService {
     console.log('🗃️👹', AppState.wildPokemon)
   }
 
-  async fetchActivePokemon(name) {
-
+  async fetchActivePokemon(pokeName) {
+    const response = await pokeApi.get(`pokemon/${pokeName}`)
+    console.log('👈👹 📡 name', response.data)
+    const selectedPokemon = new Pokemon(response.data)
+    console.log('🗃️👈👹')
   }
 
 }

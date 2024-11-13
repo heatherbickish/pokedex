@@ -32,22 +32,19 @@ export class WildPokemonController {
     setHTML('wild-pokemon-list', wildPokemonContent)
   }
 
-  async fetchActivePokemon(name) {
+  async fetchActivePokemon(pokeName) {
     try {
-      console.log('👈👹', name)
-      await wildpokemonService.fetchActivePokemon()
+      console.log('👈👹', pokeName)
+      await wildpokemonService.fetchActivePokemon(pokeName)
     } catch (error) {
       console.error(error)
       Pop.toast('Uh oh! Could not snag em')
     }
   }
-  // drawWildPokemonList() {
-  //   console.log('🖋️👹')
-  //   const pokemon = AppState.wildPokemon
-  //   let wildPokemonHTML = ''
-  //   AppState.wildPokemon.forEach(wild => wildPokemonHTML += wild.name)
-  //   setHTML('wild-pokemon-list', wildPokemonHTML)
-  // }
+
+  drawActivePokemon() {
+    console.log('🖋️👈👹')
+  }
 
 
 
