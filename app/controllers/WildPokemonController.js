@@ -11,6 +11,7 @@ export class WildPokemonController {
     console.log('👹🎮')
     this.fetchWildPokemon()
     AppState.on('wildPokemon', this.drawWildPokemonList)
+    AppState.on('activePokemon', this.drawActivePokemon)
   }
 
 
@@ -20,7 +21,7 @@ export class WildPokemonController {
       await wildpokemonService.fetchWildPokemon()
     } catch (error) {
       console.error(error)
-      Pop.toast("Oh no! Could'nt find em")
+      Pop.toast("Oh no! Could not find em")
 
     }
   }
@@ -44,6 +45,7 @@ export class WildPokemonController {
 
   drawActivePokemon() {
     console.log('🖋️👈👹')
+    setHTML('active-pokemon', AppState.activePokemon.activePokemonTemplate)
   }
 
 

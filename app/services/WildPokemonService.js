@@ -12,18 +12,18 @@ class wildPokemonService {
 
   async fetchWildPokemon() {
     const response = await pokeApi.get('pokemon?limit=151')
-    console.log('👹📡', response.data)
+    // console.log('👹📡', response.data)
     const wild = response.data.results.map(wildData => new Pokemon(wildData))
-    console.log('👹👹👹')
+    // console.log('👹👹👹')
     AppState.wildPokemon = wild
-    console.log('🗃️👹', AppState.wildPokemon)
+    // console.log('🗃️👹', AppState.wildPokemon)
   }
 
   async fetchActivePokemon(pokeName) {
     const response = await pokeApi.get(`pokemon/${pokeName}`)
-    console.log('👈👹 📡 name', response.data)
+    // console.log('👈👹 📡 name', response.data)
     const selectedPokemon = new Pokemon(response.data)
-    console.log('🗃️👈👹')
+    // console.log('🗃️👈👹')
   }
 
 }

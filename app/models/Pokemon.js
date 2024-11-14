@@ -3,23 +3,13 @@
 export class Pokemon {
   constructor(data) {
     this.name = data.name
-    this.nickName = data.nickName
-    this.img = data.img
-    this.backImg = data.backImg
-    this.weight = data.weight
-    this.height = data.height
-    this.health = data.health
-    this.defense = data.defense
-    this.attack = data.attack
-    this.speed = data.speed
-    this.types = data.types
-    this.creatorId = data.creatorId
+
   }
 
 
   // Pokemon.js
   static wildListTemplate(pokemon) {
-    return `<div onclick="app.WildPokemonController.fetchActivePokemon('${pokemon.name}')" class="selectable text-warning rounded p-2" role="button">
+    return `<div onclick="app.WildPokemonController.fetchActivePokemon('${pokemon.name}')" class="selectable text-warning rounded p-2 text-uppercase" role="button">
     <div class="text-dark">${pokemon.name}</div>
     </div>   
         
@@ -30,12 +20,20 @@ export class Pokemon {
 export class DetailedPokemon extends Pokemon {
   constructor(data) {
     super()
-
-
-
+    this.id = data._id ?? ''
+    this.nickName = data.nickName ?? ''
+    this.img = data.img ?? data.sprites.front_default
+    this.backImg = data.backImg ?? data.sprites.back_default
+    this.weight = data.weight
+    this.height = data.height
+    this.health = data.health ?? data.stats[0].base_stat
+    this.defense = data.defense ?? data.stats[2].base_stat
+    this.attack = data.attack ?? data.stats[1].base_stat
+    this.speed = data.speed ?? data.stats[5].base_stat
+    this.types = data.types
   }
 
-  get activePokemon() {
+  get activePokemonTemplate() {
     return `
     <div class="card">
     <div class="card-body">
